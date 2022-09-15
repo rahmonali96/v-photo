@@ -1,10 +1,14 @@
 package com.example.vphoto.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 
 /**
  * Developed by Rahmonali Yoqubov
@@ -14,14 +18,13 @@ import java.io.IOException;
  */
 @RestController
 public class TestController {
-    @GetMapping
-    public String test() {
-        File file = new File("1.txt");
+    @PostMapping
+    public String upload(@RequestParam("file") MultipartFile file) {
         try {
-            file.createNewFile();
+            file.transferTo(Path.of(String.format("/home/%s", file.getOriginalFilename())));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return file.toPath().getParent().toString();
+        return "Uploaded successfully!";
     }
 }
