@@ -21,7 +21,7 @@ public class TestController {
     @PostMapping
     public String upload(@RequestParam("file") MultipartFile file) {
         try {
-            file.transferTo(Path.of(String.format("/home/%s", file.getOriginalFilename())));
+            file.transferTo(Path.of(String.format("/usr/share/nginx/html/uploads/%s", file.getOriginalFilename())));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
