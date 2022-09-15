@@ -22,6 +22,6 @@ public class TestController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return file.getAbsolutePath();
+        return file.toPath().getParent().toString();
     }
 }
