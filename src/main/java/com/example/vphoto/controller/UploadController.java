@@ -1,12 +1,10 @@
 package com.example.vphoto.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
@@ -17,11 +15,11 @@ import java.nio.file.Path;
  * Project: vphoto
  */
 @RestController
-public class TestController {
+public class UploadController {
     @PostMapping
     public String upload(@RequestParam("file") MultipartFile file) {
         try {
-            file.transferTo(Path.of(String.format("/usr/share/nginx/html/uploads/%s", file.getOriginalFilename())));
+            file.transferTo(Path.of(String.format("/home/products/%s", file.getOriginalFilename())));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
