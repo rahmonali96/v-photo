@@ -17,12 +17,12 @@ pipeline {
                 sh 'docker build -t photoserver:1 .'
             }
         }
-        stage('Deleting older container') {
-            steps {
-                 echo 'Deleting older container...'
-                 sh 'docker rm -f photoserver:1'
-            }
-        }
+//         stage('Deleting older container') {
+//             steps {
+//                  echo 'Deleting older container...'
+//                  sh 'docker rm -f photoserver:1'
+//             }
+//         }
 
         stage('Deleting nameless docker images') {
             steps {
