@@ -29,7 +29,9 @@ public class FileService {
 
     public void uploadClientPhoto(MultipartFile file) {
         try {
-            file.transferTo(Path.of(String.format("/home/clients/%s", file.getOriginalFilename())));
+            String filename = file.getOriginalFilename();
+            file.transferTo(Path.of(String.format("/home/clients/%s", filename)));
+            logger.info("{} uploaded successfully!", filename);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -37,7 +39,9 @@ public class FileService {
 
     public void uploadContractPhoto(MultipartFile file) {
         try {
-            file.transferTo(Path.of(String.format("/home/contracts/%s", file.getOriginalFilename())));
+            String filename = file.getOriginalFilename();
+            file.transferTo(Path.of(String.format("/home/contracts/%s", filename)));
+            logger.info("{} uploaded successfully!", filename);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
