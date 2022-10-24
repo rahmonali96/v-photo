@@ -1,6 +1,8 @@
 package com.example.vphoto.controller;
 
 import com.example.vphoto.service.FileService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,9 +25,9 @@ public class UploadController {
     }
 
     @PostMapping("/products")
-    public String uploadProductPhoto(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> uploadProductPhoto(@RequestParam("file") MultipartFile file) {
         fileService.uploadProductPhoto(file);
-        return "Product photo uploaded successfully!";
+        return new ResponseEntity<>("Product photo uploaded successfully!", HttpStatus.OK);
     }
 
     @PostMapping("/clients")
