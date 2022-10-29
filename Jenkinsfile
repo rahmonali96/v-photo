@@ -17,19 +17,19 @@ pipeline {
                 sh 'docker build -t photoserver:1 .'
             }
         }
-        stage('Deleting older container') {
-            steps {
-                 echo 'Deleting older container...'
-                 sh 'docker rm -f photoserver'
-            }
-        }
+//         stage('Deleting older container') {
+//             steps {
+//                  echo 'Deleting older container...'
+//                  sh 'docker rm -f photoserver'
+//             }
+//         }
 
-        stage('Deleting nameless docker images') {
-            steps {
-                echo 'Deleting nameless images...'
-                sh 'docker rmi $(docker images -q -f dangling=true)'
-            }
-        }
+//         stage('Deleting nameless docker images') {
+//             steps {
+//                 echo 'Deleting nameless images...'
+//                 sh 'docker rmi $(docker images -q -f dangling=true)'
+//             }
+//         }
         stage('Creating container') {
             steps {
                  echo 'Creating container...'
