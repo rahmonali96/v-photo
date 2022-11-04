@@ -33,7 +33,7 @@ pipeline {
         stage('Creating container') {
             steps {
                  echo 'Creating container...'
-                 sh 'docker run --name photoserver -v products:/home/products -v clients:/home/clients  -v contracts:/home/contracts -d -p 8181:8181 photoserver:1'
+                 sh 'docker run --name photoserver -v products:/home/products -v clients:/home/clients  -v contracts:/home/contracts -d  photoserver:1'
             }
         }
     }
